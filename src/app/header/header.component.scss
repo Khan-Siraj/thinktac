@@ -1,0 +1,30 @@
+*:focus {
+  box-shadow: none;
+  outline: none;
+}
+.toolbar {
+  background: #fca032 !important;
+}
+
+.search-field {
+  align-self: center;
+  margin-right: 30px;
+}
+
+mat-form-field {
+   margin-right: 20px;
+   mat-label {
+       color: white !important;
+   }
+}
+
+input {
+    background-color: white !important;
+    padding: 4px 6px !important;
+    border-radius: 4px;
+}
+
+.mat-form-field-underline {
+  display: none !important;
+}
+
