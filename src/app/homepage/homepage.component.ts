@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { List } from '../interfaces/list.interface';
 import { ItemsService } from '../services/items.service';
 
 @Component({
@@ -7,13 +8,13 @@ import { ItemsService } from '../services/items.service';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
-  data: any;
+  data!: List[];
   textSkeleton:boolean=true;
   imgSkeleton:boolean=true;
   constructor(private itemsService: ItemsService) { }
 
   ngOnInit(): void {
-    this.itemsService.lists$.subscribe(res => {
+    this.itemsService.lists$.subscribe((res:List[]) => {
       this.data = res;
     })
   }

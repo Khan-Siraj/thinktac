@@ -10,7 +10,10 @@
       <div class="collapse navbar-collapse mt-xs-4" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item search-field">
-            <form class="example-form">
+            <form class="example-form" (ngSubmit)="search()">
+              <button mat-icon-button type="submit">
+                <mat-icon>search</mat-icon>
+              </button>
               <input type="text"
                      placeholder="Search TACitivities"
                      [formControl]="control"

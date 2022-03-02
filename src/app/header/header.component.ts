@@ -11,7 +11,6 @@ import {map, debounceTime, distinctUntilChanged} from 'rxjs/operators';
   encapsulation:ViewEncapsulation.None
 })
 export class HeaderComponent implements OnInit {
-  data:any;
   language:string="";
   langsArr:string[]=[]
   control = new FormControl();
@@ -24,11 +23,14 @@ export class HeaderComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.itemsService.lists$.subscribe(res=>this.data=res);
     this.itemsService.languages$.subscribe(res=>this.langsArr=res);
     this.itemsService.subjects$.subscribe(res=>this.subjects=res);
     // search 
-    this.control.valueChanges.pipe(
+    this.search();
+  }
+
+  search():void{
+     this.control.valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged(),
     ).subscribe(res=>{
