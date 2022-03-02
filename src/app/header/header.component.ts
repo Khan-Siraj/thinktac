@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { FilterPipe } from '../pipes/filter.pipe';
 import { ItemsService } from '../services/items.service';
-import {startWith, map} from 'rxjs/operators';
+import {startWith, map, debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -29,7 +29,10 @@ export class HeaderComponent implements OnInit {
     this.itemsService.languages$.subscribe(res=>this.langsArr=res);
     this.itemsService.subjects$.subscribe(res=>this.subjects=res);
     // search 
-    this.control.valueChanges.subscribe(res=>{
+    this.control.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+    ).subscribe(res=>{
       this.itemsService.getFilterdDataBySearch(res);
     })
   }
