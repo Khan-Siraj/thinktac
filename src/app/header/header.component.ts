@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { FilterPipe } from '../pipes/filter.pipe';
 import { ItemsService } from '../services/items.service';
-import {startWith, map, debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {map, debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
