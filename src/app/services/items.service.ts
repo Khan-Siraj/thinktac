@@ -10,6 +10,7 @@ import { HttpService } from './http.service';
   providedIn: 'root'
 })
 export class ItemsService {
+  isLoader$:Subject<boolean> = new BehaviorSubject<boolean>(true);
   serverLists$:Subject<List[]>= new BehaviorSubject<List[]>([]);
   lists$:Subject<List[]> = new BehaviorSubject<List[]>([]);
   languages$:Subject<string[]> = new BehaviorSubject<string[]>([]);
@@ -26,6 +27,7 @@ export class ItemsService {
     this.httpService.getList().subscribe((res:any)=>{
       this.lists$.next(res);
       this.serverLists$.next(res);
+      this.isLoader$.next(false);
     },
     (err:any)=>{
       console.log(err)

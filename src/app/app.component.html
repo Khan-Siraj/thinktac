@@ -1,2 +1,6 @@
 <app-header></app-header>
-<app-homepage></app-homepage>
+<ng-template [ngIf]="isLoader">
+    <app-skeleton-loader></app-skeleton-loader>
+</ng-template>
+
+<router-outlet></router-outlet>

@@ -13,6 +13,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchPipe } from './pipes/search.pipe';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     HomepageComponent,
     PropFilterPipe,
     FilterPipe,
-    SearchPipe
+    SearchPipe,
+    SkeletonLoaderComponent
   ],
   imports: [
     BrowserModule,

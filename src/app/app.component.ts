@@ -8,7 +8,10 @@ import { ItemsService } from './services/items.service';
 })
 export class AppComponent implements AfterViewInit {
   title = 'think-tac';
-  constructor(private itemService:ItemsService){}
+  isLoader!:boolean;
+  constructor(private itemService:ItemsService){
+    this.itemService.isLoader$.subscribe(res=>this.isLoader=res);
+  }
 
   ngAfterViewInit(){
     this.itemService.getList();
